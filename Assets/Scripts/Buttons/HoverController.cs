@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
-public class CursorController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class HoverController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
     public GameObject cursorImage;

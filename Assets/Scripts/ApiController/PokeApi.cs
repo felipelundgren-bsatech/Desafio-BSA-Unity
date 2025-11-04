@@ -1,15 +1,27 @@
+using System.Collections;
 using UnityEngine;
 using System.Net;
 using System.IO;
+using UnityEngine.Networking;
 
 public static class PokeApi
 {
-    public static Pokemon PokemonFetch()
+    public static Pokemon pokemon;
+    public static IEnumerator PokemonFetch(int id)
     {
-        HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://pokeapi.co/api/v2/pokemon/ditto");
-        HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-        StreamReader reader = new StreamReader(response.GetResponseStream());
-        string Json = reader.ReadToEnd();
-        return JsonUtility.FromJson<Pokemon>(Json);
+        
+        UnityWebRequest request = UnityWebRequest.Get($"https://pokeapi.co/api/v2/pokemon/{id}");
+        yield return request.SendWebRequest(); 
+
+        if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogError("Erro ao carregar sprite: " + request.error);
+        }
+        else
+        {
+            string json = request.downloadHandler.text;
+            pokemon=JsonUtility.FromJson<Pokemon>(json);
+            
+        }
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
-public class HoverController : MonoBehaviour, IPointerClickHandler
+public class ButtonOpenAndClose : MonoBehaviour, IPointerClickHandler
 {
     
     [SerializeField] private GameObject menuToClose;
