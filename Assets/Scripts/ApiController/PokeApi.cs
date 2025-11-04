@@ -1,7 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using System.Net;
-using System.IO;
 using UnityEngine.Networking;
 
 public static class PokeApi
@@ -24,4 +22,6 @@ public static class PokeApi
             
         }
     }
+  
 }
+    

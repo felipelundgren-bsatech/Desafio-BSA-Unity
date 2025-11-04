@@ -14,6 +14,8 @@ public class PokemonToShow : MonoBehaviour
     public bool player;
     
     
+    
+    
 
     public void NewPokemon()
     {
@@ -27,6 +29,7 @@ public class PokemonToShow : MonoBehaviour
         
         Pokemon pokemon = PokeApi.pokemon;
         pokemonName.text = pokemon.name;
+        
         string pokemonposition = String.Empty;
         if (player)
         {
@@ -49,6 +52,7 @@ public class PokemonToShow : MonoBehaviour
             Texture2D texture = DownloadHandlerTexture.GetContent(request);
             texture.filterMode = FilterMode.Point;
             pokemonSprite.texture = texture;
+            pokemonSprite.SetNativeSize();
             
 
         }
